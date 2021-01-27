@@ -19,7 +19,7 @@
 #include "soc/io_mux_reg.h"
 #include "driver/gpio.h"
 #include "driver/periph_ctrl.h"
-#include "rom/lldesc.h"
+#include "esp32/rom/lldesc.h"
 #include "DMABufferDescriptor.h"
 
 class I2S

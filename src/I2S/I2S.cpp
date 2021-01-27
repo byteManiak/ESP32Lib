@@ -31,7 +31,6 @@ I2S::I2S(const int i2sIndex)
 
 void IRAM_ATTR I2S::interruptStatic(void *arg)
 {
-	volatile i2s_dev_t &i2s = *i2sDevices[((I2S *)arg)->i2sIndex];
 	//i2s object not safely accesed in DRAM or IRAM
 	//i2s.int_clr.val = i2s.int_raw.val;
 	//using REG_WRITE to clear the interrupt instead
