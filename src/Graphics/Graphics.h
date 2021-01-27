@@ -160,18 +160,14 @@ class Graphics: public ImageDrawer
 	{
 		if (!font)
 			return;
+		if (cursorX > xres || cursorX + font->charWidth < 0 ||
+		    cursorY > yres || cursorY + font->charHeight < 0)
+			return;
 		if (font->valid(ch))
 			drawChar(cursorX, cursorY, ch);
 		else
-			drawChar(cursorX, cursorY, ' ');		
+			drawChar(cursorX, cursorY, ' ');
 		cursorX += font->charWidth;
-		if (cursorX + font->charWidth > xres)
-		{
-			cursorX = cursorBaseX;
-			cursorY += font->charHeight;
-			if(autoScroll && cursorY + font->charHeight > yres)
-				scroll(cursorY + font->charHeight - yres, backColor);
-		}
 	}
 
 	void println(const char ch)
