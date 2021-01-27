@@ -23,4 +23,4 @@
 #define DEBUG_PRINTLNF(a, f) ;
 #define DEBUG_PRINTF(a, f) ;
 */
-#define ERROR(a) {Serial.println((a)); delay(3000); throw 0;};
+#define ERROR(a) {Serial.println((a)); delay(3000);};
