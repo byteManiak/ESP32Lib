@@ -408,6 +408,12 @@ class Graphics: public ImageDrawer
 		     (y1 < 0 && y2 < 0) || (y1 > yres && y2 > yres) )
 			return;
 
+		if (y1 == y2)
+		{
+			xLine(x1, x2, y1, color);
+			return;
+		}
+
 		int x, y, xe, ye;
 		int dx = x2 - x1;
 		int dy = y2 - y1;
