@@ -1,3 +1,6 @@
+# This fork of ESP32Lib
+This is my fork of ESP32Lib which is modified with double-buffered applications in mind. Some performance improvements are added for this purpose.
+
 # bitluni's ESP32Lib
 ESP32Lib is a collection features for the ESP32 including highest performance VGA graphics (sprites, 3D), sound and game controllers packed in an Arduino library.
 Check out https://youtube.com/bitlunislab for project updates
