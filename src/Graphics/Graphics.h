@@ -417,10 +417,10 @@ class Graphics: public ImageDrawer
 		float dxo = dx;
 		float dyo = dy;
 		// Recalculate a coordinate for x1 that is inside the screen bounds
-		if (x1 < 0 || x1 > xres)
+		if (x1 < 0 || x1 >= xres)
 		{
 			// Set the new x1 to be at the edge of the screen
-			x1 = (x1 < 0) ? 0 : xres;
+			x1 = (x1 < 0) ? 0 : xres-1;
 			// Recalculate the distance on x axis
 			dx = x2 - x1;
 			dx1 = labs(dx);
@@ -431,10 +431,10 @@ class Graphics: public ImageDrawer
 			dy1 = labs(dy);
 		}
 		// Recalculate a coordinate for x2 that is inside the screen bounds
-		if (x2 < 0 || x2 > xres)
+		if (x2 < 0 || x2 >= xres)
 		{
 			// Set the new x2 to be at the edge of the screen
-			x2 = (x2 < 0) ? 0 : xres;
+			x2 = (x2 < 0) ? 0 : xres-1;
 			// Recalculate the distance on x axis
 			dx = x2 - x1;
 			dx1 = labs(dx);
@@ -445,10 +445,10 @@ class Graphics: public ImageDrawer
 			dy1 = labs(dy);
 		}
 		// Recalculate a coordinate for y1 that is inside the screen bounds
-		if (y1 < 0 || y1 > yres)
+		if (y1 < 0 || y1 >= yres)
 		{
 			// Set the new y1 to be at the edge of the screen
-			y1 = (y1 < 0) ? 0 : yres;
+			y1 = (y1 < 0) ? 0 : yres-1;
 			// Recalculate the distance on y axis
 			dy = y2 - y1;
 			dy1 = labs(dy);
@@ -459,10 +459,10 @@ class Graphics: public ImageDrawer
 			dx1 = labs(dx);
 		}
 		// Recalculate a coordinate for y2 that is inside the screen bounds
-		if (y2 < 0 || y2 > yres)
+		if (y2 < 0 || y2 >= yres)
 		{
 			// Set the new y2 to be at the edge of the screen
-			y2 = (y2 < 0) ? 0 : yres;
+			y2 = (y2 < 0) ? 0 : yres-1;
 			// Recalculate the distance on y axis
 			dy = y2 - y1;
 			dy1 = labs(dy);
@@ -489,7 +489,7 @@ class Graphics: public ImageDrawer
 				y = y2;
 				xe = x1;
 			}
-			dot(x, y, color);
+			dotFast(x, y, color);
 			for (int i = 0; x < xe; i++)
 			{
 				x = x + 1;
@@ -509,7 +509,7 @@ class Graphics: public ImageDrawer
 					}
 					px = px + 2 * (dy1 - dx1);
 				}
-				dot(x, y, color);
+				dotFast(x, y, color);
 			}
 		}
 		else
@@ -526,7 +526,7 @@ class Graphics: public ImageDrawer
 				y = y2;
 				ye = y1;
 			}
-			dot(x, y, color);
+			dotFast(x, y, color);
 			for (int i = 0; y < ye; i++)
 			{
 				y = y + 1;
@@ -546,7 +546,7 @@ class Graphics: public ImageDrawer
 					}
 					py = py + 2 * (dx1 - dy1);
 				}
-				dot(x, y, color);
+				dotFast(x, y, color);
 			}
 		}
 	}
