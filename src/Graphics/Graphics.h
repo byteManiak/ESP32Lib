@@ -151,9 +151,9 @@ class Graphics: public ImageDrawer
 		for (int py = 0; py < font->charHeight; py++)
 			for (int px = 0; px < font->charWidth; px++)
 				if (*(pix++))
-					dotMix(px + x, py + y, frontColor);
+					dotFast(px + x, py + y, frontColor);
 				else
-					dotMix(px + x, py + y, backColor);
+					dotFast(px + x, py + y, backColor);
 	}
 
 	void print(const char ch)
