@@ -10,17 +10,16 @@
 		http://bitluni.net
 */
 #pragma once
-#include "Arduino.h"
+#include <esp_log.h>
 
-
-#define DEBUG_PRINTLN(a) Serial.println(a)
-#define DEBUG_PRINT(a) Serial.print(a)
-#define DEBUG_PRINTLNF(a, f) Serial.println(a, f)
-#define DEBUG_PRINTF(a, f) Serial.print(a, f)
+#define DEBUG_PRINTLN(a) ESP_LOGI("debug", a)
+#define DEBUG_PRINT(a) ESP_LOGI("debug", a)
+#define DEBUG_PRINTLNF(a, f) ESP_LOGI("debug", a, f)
+#define DEBUG_PRINTF(a, f) ESP_LOGI("debug", a, f)
 /*
 #define DEBUG_PRINTLN(a) ;
 #define DEBUG_PRINT(a) ;
 #define DEBUG_PRINTLNF(a, f) ;
 #define DEBUG_PRINTF(a, f) ;
 */
-#define ERROR(a) {Serial.println((a)); delay(3000);};
+#define ERROR(a) ESP_LOGE("debug", a)
