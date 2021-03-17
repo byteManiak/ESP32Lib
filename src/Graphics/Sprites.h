@@ -40,6 +40,11 @@ class Sprite : public Image
 		g.image(*this, x - points[0][0], y - points[0][1]);
 	}
 
+	void drawScaled(ImageDrawer &g, int x, int y, float scaleFactor)
+	{
+		g.imageScaled(*this, x - points[0][0], y - points[0][1], scaleFactor);
+	}
+
 	void drawMix(ImageDrawer &g, int x, int y)
 	{
 		g.imageMix(*this, x - points[0][0], y - points[0][1]);
@@ -69,6 +74,11 @@ class Sprites
 	void draw(ImageDrawer &g, int sprite, int x, int y)
 	{
 		sprites[sprite].draw(g, x, y);
+	}
+
+	void drawScaled(ImageDrawer &g, int sprite, int x, int y, float scaleFactor)
+	{
+		sprites[sprite].drawScaled(g, x, y, scaleFactor);
 	}
 
 	void drawMix(ImageDrawer &g, int sprite, int x, int y)

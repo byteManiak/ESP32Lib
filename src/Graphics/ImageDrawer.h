@@ -15,15 +15,19 @@ class ImageDrawer
 {
 	public:
 	virtual void imageR8G8B8A8(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
+	virtual void imageR8G8B8A8Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor) = 0;
 	virtual void imageAddR8G8B8A8(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
 	virtual void imageMixR8G8B8A8(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
 	virtual void imageR5G5B4A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
+	virtual void imageR5G5B4A2Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor) = 0;
 	virtual void imageAddR5G5B4A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
 	virtual void imageMixR5G5B4A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
 	virtual void imageR2G2B2A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
+	virtual void imageR2G2B2A2Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor) = 0;
 	virtual void imageAddR2G2B2A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
 	virtual void imageMixR2G2B2A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
 	virtual void imageR4G4B4A4(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
+	virtual void imageR4G4B4A4Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor) = 0;
 	virtual void imageAddR4G4B4A4(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
 	virtual void imageMixR4G4B4A4(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres) = 0;
 
@@ -105,6 +109,27 @@ class ImageDrawer
 			break;
 			case Image::R4G4B4A4:
 				imageR4G4B4A4(image, x, y, 0, 0, image.xres, image.yres);
+			break;
+			default:
+			break;
+		}
+	}
+
+	void imageScaled(Image &image, int x, int y, float scaleFactor)
+	{
+		switch(image.pixelFormat)
+		{
+			case Image::R8G8B8A8:
+				imageR8G8B8A8Scaled(image, x, y, 0, 0, image.xres, image.yres, scaleFactor);
+			break;
+			case Image::R5G5B4A2:
+				imageR5G5B4A2Scaled(image, x, y, 0, 0, image.xres, image.yres, scaleFactor);
+			break;
+			case Image::R2G2B2A2:
+				imageR2G2B2A2Scaled(image, x, y, 0, 0, image.xres, image.yres, scaleFactor);
+			break;
+			case Image::R4G4B4A4:
+				imageR4G4B4A4Scaled(image, x, y, 0, 0, image.xres, image.yres, scaleFactor);
 			break;
 			default:
 			break;

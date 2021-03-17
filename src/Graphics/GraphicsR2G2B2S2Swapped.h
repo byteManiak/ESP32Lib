@@ -112,7 +112,20 @@ class GraphicsR2G2B2S2Swapped: public Graphics<unsigned char>
 			int i = srcX + (py + srcY) * image.xres;
 			for (int px = 0; px < srcXres; px++)
 				dot(px + x, py + y, ((unsigned char*)image.pixels)[i++]);
-		}		
+		}
+	}
+
+	virtual void imageR2G2B2A2Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor)
+	{
+		for (int py = 0; py < srcYres * scaleFactor; py++)
+		{
+			float i = (srcX + int(py/scaleFactor + srcY) * image.xres);
+			for (float px = 0; px < srcXres * scaleFactor; px++)
+			{
+				dot(float(px) + x, int(py) + y, ((unsigned char*)image.pixels)[int(i)]);
+				i += 1.f/scaleFactor;
+			}
+		}
 	}
 
 	virtual void imageAddR2G2B2A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres)

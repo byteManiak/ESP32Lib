@@ -722,7 +722,20 @@ class Graphics: public ImageDrawer
 			int i = srcX + (py + srcY) * image.xres;
 			for (int px = 0; px < srcXres; px++)
 				dot(px + x, py + y, R8G8B8A8ToColor(((unsigned long*)image.pixels)[i++]));
-		}		
+		}
+	}
+
+	virtual void imageR8G8B8A8Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor)
+	{
+		for (int py = 0; py < srcYres * scaleFactor; py++)
+		{
+			float i = srcX + int(py/scaleFactor + srcY) * image.xres;
+			for (int px = 0; px < srcXres * scaleFactor; px++)
+			{
+				dot(px + x, py + y, R8G8B8A8ToColor(((unsigned long*)image.pixels)[int(i)]));
+				i += 1.f/scaleFactor;
+			}
+		}
 	}
 
 	virtual void imageAddR8G8B8A8(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres)
@@ -752,7 +765,20 @@ class Graphics: public ImageDrawer
 			int i = srcX + (py + srcY) * image.xres;
 			for (int px = 0; px < srcXres; px++)
 				dot(px + x, py + y, R4G4B4A4ToColor(((unsigned short*)image.pixels)[i++]));
-		}		
+		}
+	}
+
+	virtual void imageR4G4B4A4Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor)
+	{
+		for (int py = 0; py < srcYres * scaleFactor; py++)
+		{
+			float i = srcX + int(py/scaleFactor + srcY) * image.xres;
+			for (int px = 0; px < srcXres * scaleFactor; px++)
+			{
+				dot(px + x, py + y, R4G4B4A4ToColor(((unsigned short*)image.pixels)[int(i)]));
+				i += 1.f/scaleFactor;
+			}
+		}
 	}
 
 	virtual void imageAddR4G4B4A4(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres)
@@ -782,7 +808,20 @@ class Graphics: public ImageDrawer
 			int i = srcX + (py + srcY) * image.xres;
 			for (int px = 0; px < srcXres; px++)
 				dot(px + x, py + y, R5G5B4A2ToColor(((unsigned short*)image.pixels)[i++]));
-		}		
+		}
+	}
+
+	virtual void imageR5G5B4A2Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor)
+	{
+		for (int py = 0; py < srcYres * scaleFactor; py++)
+		{
+			float i = srcX + int(py/scaleFactor + srcY) * image.xres;
+			for (int px = 0; px < srcXres * scaleFactor; px++)
+			{
+				dot(px + x, py + y, R5G5B4A2ToColor(((unsigned short*)image.pixels)[int(i)]));
+				i += 1.f/scaleFactor;
+			}
+		}
 	}
 
 	virtual void imageAddR5G5B4A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres)
@@ -812,7 +851,20 @@ class Graphics: public ImageDrawer
 			int i = srcX + (py + srcY) * image.xres;
 			for (int px = 0; px < srcXres; px++)
 				dot(px + x, py + y, R2G2B2A2ToColor(((unsigned char*)image.pixels)[i++]));
-		}		
+		}
+	}
+
+	virtual void imageR2G2B2A2Scaled(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres, float scaleFactor)
+	{
+		for (int py = 0; py < srcYres * scaleFactor; py++)
+		{
+			float i = srcX + (py/scaleFactor + srcY) * image.xres;
+			for (int px = 0; px < srcXres * scaleFactor; px++)
+			{
+				dot(px + x, py + y, R2G2B2A2ToColor(((unsigned char*)image.pixels)[int(i)]));
+				i += 1.f/scaleFactor;
+			}
+		}
 	}
 
 	virtual void imageAddR2G2B2A2(Image &image, int x, int y, int srcX, int srcY, int srcXres, int srcYres)
