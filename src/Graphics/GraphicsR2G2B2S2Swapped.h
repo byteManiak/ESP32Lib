@@ -122,7 +122,8 @@ class GraphicsR2G2B2S2Swapped: public Graphics<unsigned char>
 			float i = (srcX + int(py/scaleFactor + srcY) * image.xres);
 			for (float px = 0; px < srcXres * scaleFactor; px++)
 			{
-				dot(float(px) + x, int(py) + y, ((unsigned char*)image.pixels)[int(i)]);
+				if (((unsigned char*)image.pixels)[int(i)] != 0)
+					dot(float(px) + x, int(py) + y, ((unsigned char*)image.pixels)[int(i)]);
 				i += 1.f/scaleFactor;
 			}
 		}
